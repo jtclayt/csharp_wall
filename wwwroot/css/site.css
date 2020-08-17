@@ -66,6 +66,16 @@ nav .nav-link {
   line-height: 60px; /* Vertically center the text there */
 }
 
+.post-form > h3, .post-form > h5 {
+  margin-top: 10px;
+  align-self: flex-start;
+}
+
+.post-form > button {
+  margin-top: 10px;
+  align-self: flex-end;
+}
+
 .row {
   margin-top: 30px;
   justify-content: center;

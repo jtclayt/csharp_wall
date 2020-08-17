@@ -1,1 +1,33 @@
-<h1>Index</h1>
+@model IndexWrapper
+
+<form class="post-form" asp-action="CreateMessage" asp-controller="Home" method="POST">
+  <h3>Post a message</h3>
+  <span class="text-danger" asp-validation-for="MessageForm.Content"></span>
+  <textarea class="form-control" asp-for="MessageForm.Content"></textarea>
+  <button class="btn btn-primary" type="submit">Post a message</button>
+</form>
+
+@foreach (Message m in Model.AllMessages)
+{
+  <div class="message">
+    <h4>@m.Creator.FirstName @m.Creator.LastName - @m.CreatedAt.ToLongDateString()</h4>
+    <p>@m.Content</p>
+    <div class="comment-container pl-3">
+      @foreach (Comment c in m.Comments.OrderBy(c => c.CreatedAt))
+      {
+        <div class="message">
+          <h5>@c.Creator.FirstName @c.Creator.LastName - @c.CreatedAt.ToLongDateString()</h5>
+          <p>@c.Content</p>
+        </div>
+      }
+
+      <form class="post-form" asp-action="CreateComment" asp-controller="Home"
+        asp-route-id="@m.MessageId" method="POST">
+        <h5>Post a Comment</h5>
+        <span class="text-danger" asp-validation-for="CommentForm.Content"></span>
+        <textarea class="form-control" asp-for="CommentForm.Content"></textarea>
+        <button class="btn btn-primary" type="submit">Post a Comment</button>
+      </form>
+    </div>
+  </div>
+}

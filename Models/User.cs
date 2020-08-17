@@ -8,7 +8,7 @@ namespace Wall.Models
     public class User
     {
         [Key]
-        public int Id { get ; set; }
+        public int UserId { get ; set; }
 
         [Required]
         [MinLength(2, ErrorMessage="First name must be 2 or more characters")]
