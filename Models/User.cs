@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -34,6 +35,10 @@ namespace Wall.Models
         [DataType(DataType.Password)]
         [Display(Name="Confirm Password")]
         public string Confirm { get ; set; }
+
+        public List<Message> Messages { get; set; }
+
+        public List<Comment> Comments { get; set; }
 
         public DateTime CreatedAt { get ; set; } = DateTime.Now;
         public DateTime UpdatedAt { get ; set; } = DateTime.Now;
