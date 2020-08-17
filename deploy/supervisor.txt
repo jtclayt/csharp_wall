@@ -1,0 +1,10 @@
+[program:Wall]
+command=/usr/bin/dotnet  /var/www/Wall/bin/Debug/netcoreapp3.1/publish/Wall.dll
+directory=/var/www/Wall/bin/Debug/netcoreapp3.1/publish
+autostart=true
+autorestart=true
+stderr_logfile=/var/log/Wall.err.log
+stdout_logfile=/var/log/Wall.out.log
+environment=ASPNETCORE_ENVIRONMENT=Production
+user=www-data
+stopsignal=INT
